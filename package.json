@@ -1,0 +1,19 @@
+{
+    "scripts": {
+        "build": "tsc",
+        "deploy:link": "pm2 link xawlat3r5becrs4 ck64gxv8k9re3i2",
+        "deploy:reload": "pm2 reload ecosystem.config.js production"
+    },
+    "dependencies": {
+        "express": "^4.21.1",
+        "@placekit/client-js": "^2.3.0",
+        "winston": "^3.17.0"
+    },
+    "devDependencies": {
+        "typescript": "^5.6.3",
+        "ts-node": "^10.9.2",
+        "@types/node": "^22.9.0",
+        "@types/express": "^4.17.21",
+        "dotenv": "^16.4.5"
+    }
+}

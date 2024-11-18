@@ -1,0 +1,69 @@
+name: Deploy to Remote Server
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      zip_name: ${{ steps.generate_filename.outputs.zip_name }}
+    steps:
+      - name: checkout build
+        uses: actions/checkout@v4
+      - name: build code
+        run: |
+          npm ci
+          npm run build
+
+      - name: Generate ZIP Filename
+        id: generate_filename
+        run: |
+
+          VERSION=$(jq -r '.version' package.json)  
+          ZIP_NAME="iyuSearch_v${VERSION}.tgz"
+          echo "Generated ZIP name: $ZIP_NAME"
+          # Set the ZIP file name as an output for use in other jobs
+          echo "::set-output name=zip_name::$ZIP_NAME"
+      - name: packaging
+        run: |
+
+          cp ecosystem.config.js package.json package-lock.json dist
+          cd dist
+          tar czf ../${{ steps.generate_filename.outputs.zip_name }} .
+      - name: Save package artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.generate_filename.outputs.zip_name }}
+          path: ${{ steps.generate_filename.outputs.zip_name }}
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          # Add the private key from GitHub Secrets
+          echo "${{ secrets.SSHKEY }}" | tr -d '\r' > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          # Scan and add the remote server to the known_hosts file to avoid host key verification prompt
+          ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
+
+      - name: Download package artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ needs.build.outputs.zip_name }}
+
+      - name: Deploy to Remote Server
+        run: |
+          echo ${{ needs.build.outputs.zip_name }}
+          scp ${{ needs.build.outputs.zip_name }} ${{secrets.USERNAME}}@${{secrets.HOST}}:~/addresses
+          ssh ${{secrets.USERNAME}}@${{secrets.HOST}} "
+            cd ~/adresses
+            tar xzf ${{ needs.build.outputs.zip_name }}
+            rm ${{ needs.build.outputs.zip_name }} 
+            npm ci
+            npm run deploy:link
+            PORT=${{ secrets.SERVER_PORT }} PLACEKIT_API_KEY=${{ secrets.PLACEKIT_API_KEY }} npm run deploy:reload
+          "
+    
