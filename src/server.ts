@@ -10,7 +10,7 @@ dotenv.config();
 const app = express();
 
 // Use environment variables for configuration
-const PORT = process.env.PORT || 4040;
+const PORT = process.env.PORT;
 
 app.use((req: Request, res: Response, next: NextFunction) => {
   logger.info(`Request: ${req.method} ${req.url}`);

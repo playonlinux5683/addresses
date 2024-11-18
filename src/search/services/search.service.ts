@@ -7,7 +7,7 @@ export class SearchService {
 	private pkClient!: PKClient;
 
 	constructor() {
-		const PLACEKIT_API_KEY = process.env.PLACEKIT_API_KEY || 'pk_ole+bOPq2agFD7gQf9LRZbHkGRIiFRZrtnaMTMMqzu8=';
+		const PLACEKIT_API_KEY = process.env.PLACEKIT_API_KEY;
 		if (!PLACEKIT_API_KEY) {
 			logger.error('PLACEKIT_API_KEY is not set. Please set it in the environment variables.');
 			process.exit(1);

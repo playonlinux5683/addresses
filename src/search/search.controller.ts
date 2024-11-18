@@ -20,7 +20,7 @@ class SearchController {
 			const params = this.searchParserService.parse(req.query);
 			const result = await this.searchService.perform(params);
 			const response = this.searchFormatterService.format(result);
-			res.json(response);
+			res.status(200).json(response);
 		} catch (error: unknown) {
 			logger.error(error);
 			if (error instanceof HttpError) {
