@@ -1,4 +1,6 @@
 {
+    "name": "iyu-adresses",
+    "version": "0.1.0",
     "scripts": {
         "build": "tsc",
         "deploy:link": "pm2 link xawlat3r5becrs4 ck64gxv8k9re3i2",
