@@ -12,6 +12,7 @@ module.exports = {
       env_production: {
         NODE_ENV: "production", // Set the environment to production
         PORT: process.env.PORT,
+        LOG_LEVEL: process.env.LOG_LEVEL,
         PLACEKIT_API_KEY: process.env.PLACEKIT_API_KEY //"pk_ole+bOPq2agFD7gQf9LRZbHkGRIiFRZrtnaMTMMqzu8=" //process.env.PLACEKIT_API_KEY
       },
       env_development: {
