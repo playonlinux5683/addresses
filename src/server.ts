@@ -6,11 +6,11 @@ import { searchRouter } from './search';
 
 // Load environment variables from .env file
 dotenv.config();
+// Use environment variables for configuration
+const PORT = process.env.PORT;
 
 const app = express();
 
-// Use environment variables for configuration
-const PORT = process.env.PORT;
 
 app.use((req: Request, res: Response, next: NextFunction) => {
   logger.info(`Request: ${req.method} ${req.url}`);
