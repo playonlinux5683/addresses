@@ -4,7 +4,7 @@
     "scripts": {
         "build": "tsc",
         "deploy:link": "pm2 link xawlat3r5becrs4 ck64gxv8k9re3i2",
-        "deploy:reload": "pm2 reload ecosystem.config.js production"
+        "deploy:reload": "pm2 reload ecosystem.config.js --env production"
     },
     "dependencies": {
         "express": "^4.21.1",
