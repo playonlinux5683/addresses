@@ -64,6 +64,6 @@ jobs:
             rm ${{ needs.build.outputs.zip_name }} 
             npm ci
             npm run deploy:link
-            PORT=${{ secrets.SERVER_PORT }} PLACEKIT_API_KEY=${{ secrets.PLACEKIT_API_KEY }} npm run deploy:reload
+            ADDRESSES_PORT=${{ secrets.SERVER_PORT }} PLACEKIT_API_KEY=${{ secrets.PLACEKIT_API_KEY }} npm run deploy:reload
           "
     
