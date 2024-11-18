@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: "iyu_addresses", // Name of the application
-      script: "dist/server.js", // Use npm to run the Next.js app
+      script: "server.js", // Use npm to run the Next.js app
       // args: "server.js", // Run 'npm start' to serve the standalone build
       instances: 1, // Auto-scale based on the number of CPU cores
       exec_mode: "cluster", // Enable cluster mode to utilize all CPUs
