@@ -6,7 +6,7 @@ class SearchRouter {
 
 	constructor() {
 		this.router = Router();
-        this.router.get('/', searchController.search.bind(searchController));
+		this.router.get('/', searchController.search.bind(searchController));
 	}
 }
 export const searchRouter = new SearchRouter().router;

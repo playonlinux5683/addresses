@@ -27,5 +27,5 @@ app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
 
 // Start the server
 app.listen(PORT, () => {
-  logger.info(`Server is running on http://localhost:${PORT} ${process.env.PLACEKIT_API_KEY}`);
+  logger.info(`Server is running on http://localhost:${PORT}`);
 });
