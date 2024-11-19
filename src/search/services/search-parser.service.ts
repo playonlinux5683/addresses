@@ -4,12 +4,12 @@ import { SearchRequestDTO } from "../dto";
 import { SearchRequest } from "../models";
 
 const COUNTRIES = [
-	'at', 'be', 'bg', 'hr', 'cy', 'cz', 'dk', 'ee',
-	'fi', 'fr', 'de', 'el', 'hu', 'ie', 'it', 'lv',
-	'lt', 'lu', 'mt', 'nl', 'pl', 'pt', 'ro', 'sk',
-	'si', 'es', 'se', // EU countries
-	'tn', 'ml', 'sn', 'ci', 'bf', 'cm', 'cg', 'ga',
-	'td', 'ph', 'km', 'ht', 'lk', 'gn', 'mr', 'cd' // Additional countries
+	'AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE',
+	'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV',
+	'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK',
+	'SI', 'ES', 'SE', // EU countries
+	'TN', 'ML', 'SN', 'CI', 'BF', 'CM', 'CG', 'GA',
+	'TD', 'PH', 'KM', 'HT', 'LK', 'GN', 'MR', 'CD' // Additional countries
 ];
 
 export class SearchParserService implements ParserService<SearchRequestDTO, SearchRequest> {

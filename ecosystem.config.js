@@ -13,13 +13,13 @@ module.exports = {
         NODE_ENV: "production", // Set the environment to production
         ADDRESSES_PORT: process.env.ADDRESSES_PORT,
         LOG_LEVEL: process.env.LOG_LEVEL,
-        PLACEKIT_API_KEY: process.env.PLACEKIT_API_KEY //"pk_ole+bOPq2agFD7gQf9LRZbHkGRIiFRZrtnaMTMMqzu8=" //process.env.PLACEKIT_API_KEY
+        PLACEKIT_API_KEY: process.env.PLACEKIT_API_KEY
       },
       env_development: {
         NODE_ENV: "development", // Set the environment to production
-        ADDRESSES_PORT: process.env.PORT,
+        ADDRESSES_PORT: process.env.ADDRESSES_PORT,
         LOG_LEVEL: process.env.LOG_LEVEL,
-        PLACEKIT_API_KEY: process.env.PLACEKIT_API_KEY //"pk_ole+bOPq2agFD7gQf9LRZbHkGRIiFRZrtnaMTMMqzu8=" //process.env.PLACEKIT_API_KEY
+        PLACEKIT_API_KEY: process.env.PLACEKIT_API_KEY
       },
       log_file: "./logs/combined.log", // Log all outputs to combined.log
       out_file: "./logs/output.log", // Log standard output to output.log

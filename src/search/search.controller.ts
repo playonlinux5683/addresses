@@ -18,15 +18,17 @@ class SearchController {
 	// Route handler for /search
 	public async search(req: Request<any, any, any, SearchRequestDTO>, res: Response) {
 		try {
-			logger.info('search: begin');
-			logger.info('search: query : ', req.query);
+			
+			logger.debug('search: query : ', req.query);
 			const params: SearchRequest = this.searchParserService.parse(req.query);
-			logger.info('search: params : ', params);
+			logger.debug('search: params : ', params);
 			
 			const result = await this.searchService.perform(params);
-			logger.info('search: result : ', result);
+			logger.debug('search: result : ', result);
+
 			const response = this.searchFormatterService.format(result);
-			logger.info('search: response : ', response);
+			logger.debug('search: response : ', response);
+			
 			res.status(200).json(response);
 		} catch (error: unknown) {
 			logger.error(error);

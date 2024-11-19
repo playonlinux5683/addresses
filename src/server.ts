@@ -11,7 +11,6 @@ const PORT = process.env.ADDRESSES_PORT;
 
 const app = express();
 
-
 app.use((req: Request, res: Response, next: NextFunction) => {
   logger.info(`Request: ${req.method} ${req.url}`);
   next();
