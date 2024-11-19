@@ -18,6 +18,7 @@ class SearchController {
 	public async search(req: Request<any, any, any, SearchRequestDTO>, res: Response) {
 		try {
 			logger.info('search: begin');
+			logger.info('search: query : ', req.query);
 			const params = this.searchParserService.parse(req.query);
 			logger.info('search: params : ', params);
 			

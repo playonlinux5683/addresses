@@ -15,10 +15,10 @@ const COUNTRIES = [
 export class SearchParserService implements ParserService<SearchRequestDTO, SearchRequest> {
 
 	parse(request: SearchRequestDTO): SearchRequest {
-		if (!request.query || typeof request.query !== 'string') {
+		const { query, countries = COUNTRIES } = request;
+		if (!query || typeof query !== 'string') {
 			throw createHttpError(400, 'Query parameter is required and must be a string')
 		}
-		const { query, countries = COUNTRIES } = request;
 		return { query, countries };
 	}
 
