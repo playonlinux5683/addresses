@@ -19,7 +19,9 @@ export class SearchService {
 	public async perform(params: SearchRequest): Promise<SearchResponse> {
 		return this.pkClient.search(params.query, {
 			types: ['street'],
-			countries: params.countries
+			language: params.language,
+			countries: params.countries,
+			coordinates: params.coordinates
 		}).catch((error) => { throw error; });
 
 	}

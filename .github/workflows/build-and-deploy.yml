@@ -57,8 +57,8 @@ jobs:
       - name: Deploy to Remote Server
         run: |
           echo ${{ needs.build.outputs.zip_name }}
-          scp ${{ needs.build.outputs.zip_name }} ${{secrets.USERNAME}}@${{secrets.HOST}}:~/addresses
-          ssh ${{secrets.USERNAME}}@${{secrets.HOST}} "
+          scp ${{ needs.build.outputs.zip_name }} ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/addresses
+          ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} "
             cd ~/addresses
             tar xzf ${{ needs.build.outputs.zip_name }}
             rm ${{ needs.build.outputs.zip_name }} 
