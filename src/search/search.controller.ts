@@ -4,6 +4,7 @@ import { logger } from '../logger';
 import { HttpError } from 'http-errors';
 import { SearchRequestDTO } from './dto';
 import { SearchFormatterService, SearchParserService, SearchService } from './services';
+import { SearchRequest } from './models';
 
 class SearchController {
 
@@ -19,7 +20,7 @@ class SearchController {
 		try {
 			logger.info('search: begin');
 			logger.info('search: query : ', req.query);
-			const params = this.searchParserService.parse(req.query);
+			const params: SearchRequest = this.searchParserService.parse(req.query);
 			logger.info('search: params : ', params);
 			
 			const result = await this.searchService.perform(params);

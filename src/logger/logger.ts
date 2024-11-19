@@ -9,6 +9,7 @@ class Logger {
       level: process.env.LOG_LEVEL || 'info',
       format: format.combine(
         format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
+        format.json(),
         format.errors({ stack: true }),
         format.printf(({ timestamp, level, message, stack }) =>
           stack
